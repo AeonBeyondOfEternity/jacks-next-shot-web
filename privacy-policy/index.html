@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Jack's Next Shot — Braveris Inc.</title>
+  <meta name="description" content="Official Privacy Policy for Jack's Next Shot (com.braverisinc.jacksnextshot) developed by Braveris Inc.">
+  <link rel="canonical" href="https://aeonbeyondofeternity.github.io/jacks-next-shot-web/privacy-policy/">
+  <link rel="icon" type="image/png" href="../assets/img/branding/game_icon.png">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand-link" href="../">
+        <img class="brand-icon" src="../assets/img/branding/game_icon.png" alt="Jack's Next Shot Icon">
+        <span class="brand-text">
+          <span class="brand-title">Jack's Next Shot</span>
+          <span class="brand-sub">Braveris Inc.</span>
+        </span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+
+      <nav id="primary-nav" class="nav-links" aria-label="Main Navigation">
+        <a href="../">Home</a>
+        <a href="../#gameplay">Gameplay</a>
+        <a href="./" aria-current="page">Privacy Policy</a>
+        <a href="../terms/">Terms</a>
+        <a href="../support/">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="doc-hero">
+      <div class="container">
+        <span class="eyebrow">Legal &amp; Data Safety</span>
+        <h1>Privacy Policy</h1>
+        <p>
+          This Privacy Policy explains how <strong>Braveris Inc.</strong> collects, uses, stores, and protects information when you play
+          <strong>Jack's Next Shot</strong> (Android package <code>com.braverisinc.jacksnextshot</code>).
+        </p>
+        <div class="doc-meta">
+          <span><strong>Developer:</strong> Braveris Inc.</span>
+          <span><strong>Effective Date:</strong> November 25, 2026</span>
+          <span><strong>Support Email:</strong> <a href="mailto:braverisinc@gmail.com">braverisinc@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container doc-body">
+      <section class="doc-section">
+        <h2>1. Overview &amp; Device Permissions</h2>
+        <p>
+          Jack's Next Shot is designed as an arcade game with optional cloud progression, leaderboards, rewarded video ads, and optional in-app virtual currency purchases.
+          In its Android application manifest, the game requests only standard <code>INTERNET</code> network access.
+          It does <strong>not</strong> request access to device location, camera, microphone, SMS, call logs, contacts, or external files.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>2. Google Play Games Services &amp; Firebase Authentication</h2>
+        <p>
+          When you connect your account, Jack's Next Shot uses <strong>Firebase Authentication</strong> (<code>@capacitor-firebase/authentication</code>) paired with <strong>Google Play Games Services v2</strong> (<code>playgames.google.com</code>):
+        </p>
+        <ul>
+          <li>
+            <strong>How Play Games Authentication Works:</strong> Upon launch or when you tap the cloud account status button or leaderboard icon, the Android client invokes Google Play Games Services to obtain a Play Games server authorization code scoped to the game's OAuth 2.0 Web Client ID (Google Cloud project <code>jacks-next-shot</code>). Firebase Authentication exchanges that authorization code to sign you in natively.
+          </li>
+          <li>
+            <strong>Information Processed:</strong> Firebase Authentication and Play Games Services provide us with a unique Firebase user identifier (<code>uid</code>), authentication provider identifier (<code>playgames.google.com</code>), your public Google Play Games player display name (<code>displayName</code>), and high scores submitted to Google Play Games Leaderboards.
+          </li>
+          <li>
+            <strong>What We Do Not Access:</strong> Jack's Next Shot does not request sensitive Google Workspace scopes (such as Gmail, Drive, or Contacts) and does not access your private Google account password.
+          </li>
+        </ul>
+
+        <div class="callout-box">
+          <strong>Anonymous Authentication &amp; Offline Fallback:</strong> If Google Play Games sign-in is declined, unavailable on the device, or fails to connect, the app automatically falls back to <strong>Firebase Anonymous Authentication</strong> (<code>signInAnonymously</code>) or a locally generated device fallback identifier (<code>sheriff_jack_device_fallback_uid</code>) stored on your device so gameplay remains uninterrupted.
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>3. Local Storage &amp; Cloud Firestore Game Progress</h2>
+        <p>Your progression is stored locally on your device and synchronized to <strong>Google Cloud Firestore</strong> when authenticated and online:</p>
+        <ul>
+          <li>
+            <strong>Local Device Storage (<code>localStorage</code>):</strong> Stores save data (high score, best combo, settings, selected language [Portuguese, English, or Spanish], audio volume, virtual Braveria Star and Star Fragment balances, unlocked Almanac plates, equipped items, daily rewards streak), offline transaction queues (<code>jns_offline_queue</code>), and offline ad quota state (<code>jns_offline_ads_state</code>).
+          </li>
+          <li>
+            <strong>Cloud Firestore Profile (<code>usuarios/{uid}</code>):</strong> Stores your <code>displayName</code>, <code>highScore</code>, <code>bestCombo</code>, unlocked Almanac plates (<code>unlockedPlates</code>), <code>equipped</code> loadout, <code>dailyRewards</code> state, virtual currency wallet balance and history (<code>wallet</code>, subcollections <code>inventario</code>, <code>extrato</code>, and <code>ledger</code>), account timestamps (<code>createdAt</code>, <code>firstLoginAt</code>, <code>lastLoginAt</code>, <code>lastSeenAt</code>, <code>loginCount</code>), and offline ad cycle counters.
+          </li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>4. In-App Purchases &amp; Billing Verification</h2>
+        <p>
+          Optional consumable virtual currency packs (<em>Braveria Stars</em>) are processed exclusively by <strong>Google Play Billing</strong> via <code>@capgo/native-purchases</code>.
+          To prevent duplicate redemptions, tamper fraud, and handle refunds safely, our backend Firebase Cloud Functions (<code>verifyPlayPurchase</code> and <code>syncVoidedPurchases</code>) communicate with the Google Play Developer API and store order verification metadata (<code>orderId</code>, <code>purchaseToken</code>, <code>productId</code>, associated <code>uid</code>, star grant amount, verification mode, and timestamp) in a restricted server-only Firestore collection (<code>processed_orders</code>).
+          Braveris Inc. never receives or stores your credit card number or banking credentials.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>5. Advertising (Google AdMob)</h2>
+        <p>
+          Jack's Next Shot integrates the <strong>Google Mobile Ads / AdMob SDK</strong> (<code>@capacitor-community/admob</code>) strictly for optional <strong>Rewarded Video Ads</strong> (allowing players to watch an ad to continue a match after Game Over).
+          To load, deliver, prevent fraud on, and measure ads, Google AdMob may automatically collect device identifiers (including Android Advertising ID), IP address, general diagnostic telemetry, and ad interaction data according to Google's privacy terms.
+          When offline, up to 10 preloaded rewarded ad views per 24-hour window are tracked locally and reconciled on the server upon reconnecting.
+        </p>
+      </section>
+
+      <section class="doc-section">
+        <h2>6. Analytics, Telemetry &amp; App Security Checks</h2>
+        <ul>
+          <li><strong>No Standalone Analytics SDKs:</strong> As verified in the current codebase, Jack's Next Shot does <strong>not</strong> include Firebase Analytics, Google Analytics, Crashlytics, or third-party behavioral tracking SDKs.</li>
+          <li><strong>Operational Server Logs:</strong> Firebase Cloud Functions log minimal operational events (authenticated <code>uid</code>, transaction status, App Check verification state, and purchase verification errors) inside Google Cloud infrastructure solely for reliability and anti-fraud diagnostics.</li>
+          <li><strong>On-Device Integrity Checks:</strong> The Android app checks local installer source, package signing hash, and known tampering package names solely on the client device to protect store purchases and leaderboards.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>7. Third-Party Service Providers</h2>
+        <p>The game relies on the following Google platform services, each governed by Google's Privacy Policy (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>):</p>
+        <ul>
+          <li><strong>Google Firebase (Authentication, Cloud Firestore, Cloud Functions)</strong> — Authentication and cloud save synchronization.</li>
+          <li><strong>Google Play Games Services</strong> — Player sign-in and public leaderboards.</li>
+          <li><strong>Google Play Billing</strong> — In-app purchase processing and refund status verification.</li>
+          <li><strong>Google AdMob</strong> — Rewarded video ad delivery.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>8. Data Retention &amp; Account Deletion</h2>
+        <p>
+          We retain your cloud progression while your account remains active so your unlocks and virtual balance persist across installs.
+        </p>
+        <ul>
+          <li><strong>Local Data:</strong> You can delete all locally cached progress at any time by clearing the app's storage in Android Settings or uninstalling the game.</li>
+          <li><strong>Cloud Data &amp; Account Deletion Request:</strong> The current version of Jack's Next Shot does not include an automated in-app "Delete Account" button. To request deletion of your Firebase Authentication account and Firestore cloud profile (<code>usuarios/{uid}</code>, inventory, and wallet ledger), email <a href="mailto:braverisinc@gmail.com">braverisinc@gmail.com</a> from an accessible address and include your Play Games display name (or support details) as described on our <a href="../support/">Support page</a>. Verified Google Play transaction/order audit records (<code>processed_orders</code>) may be retained as required for tax, accounting, or chargeback compliance.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>9. Children's Privacy &amp; Contact</h2>
+        <p>
+          Jack's Next Shot does not knowingly collect personal contact information directly from children under the age of 13 (or the minimum digital consent age in your jurisdiction). If you believe a minor's data was submitted in error, contact us immediately for removal.
+        </p>
+        <p>
+          For privacy questions, data access, or deletion requests, contact <strong>Braveris Inc.</strong> at <a href="mailto:braverisinc@gmail.com">braverisinc@gmail.com</a> or visit our <a href="../support/">Support page</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-copy">&copy; 2026 Braveris Inc. — Jack's Next Shot.</p>
+        <p class="footer-copy">Contact: <a href="mailto:braverisinc@gmail.com">braverisinc@gmail.com</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="../">Home</a>
+        <a href="./">Privacy Policy</a>
+        <a href="../terms/">Terms of Service</a>
+        <a href="../support/">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../assets/js/site.js"></script>
+</body>
+</html>
