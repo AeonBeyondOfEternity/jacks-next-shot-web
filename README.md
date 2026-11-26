@@ -8,6 +8,7 @@ Public static website for **Jack's Next Shot** by **Braveris Inc.** (`com.braver
 - **Privacy Policy**: `/privacy-policy/`
 - **Terms of Service**: `/terms/`
 - **Support**: `/support/`
+- **Delete Account**: `/delete-account/`
 - **Custom 404**: `/404.html`
 
 Live project URL (GitHub Pages): `https://AeonBeyondOfEternity.github.io/jacks-next-shot-web/`

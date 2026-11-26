@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account &amp; Data | Jack's Next Shot — Braveris Inc.</title>
+  <meta name="description" content="Official account and cloud data deletion request portal for Jack's Next Shot (com.braverisinc.jacksnextshot) by Braveris Inc., including deletion steps and data retention policies.">
+  <link rel="canonical" href="https://aeonbeyondofeternity.github.io/jacks-next-shot-web/delete-account/">
+  <link rel="icon" type="image/png" href="../assets/img/branding/game_icon.png">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand-link" href="../">
+        <img class="brand-icon" src="../assets/img/branding/game_icon.png" alt="Jack's Next Shot Icon">
+        <span class="brand-text">
+          <span class="brand-title">Jack's Next Shot</span>
+          <span class="brand-sub">Braveris Inc.</span>
+        </span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+
+      <nav id="primary-nav" class="nav-links" aria-label="Main Navigation">
+        <a href="../">Home</a>
+        <a href="../#gameplay">Gameplay</a>
+        <a href="../privacy-policy/">Privacy Policy</a>
+        <a href="../terms/">Terms</a>
+        <a href="../support/">Support</a>
+        <a href="./" aria-current="page">Delete Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="doc-hero">
+      <div class="container">
+        <span class="eyebrow" data-del-i18n="eyebrow">Account &amp; Data Deletion</span>
+        <h1 data-del-i18n="title">Delete Your Account &amp; Cloud Data</h1>
+        <p data-del-i18n="subtitle">
+          Official account deletion portal for Jack's Next Shot (com.braverisinc.jacksnextshot) developed by Braveris Inc.
+        </p>
+        <div class="doc-meta">
+          <span><strong>App:</strong> Jack's Next Shot (<code>com.braverisinc.jacksnextshot</code>)</span>
+          <span><strong>Developer:</strong> Braveris Inc.</span>
+          <span><strong>Support Email:</strong> <a href="mailto:braverisinc@gmail.com">braverisinc@gmail.com</a></span>
+        </div>
+        <div class="lang-toggle-bar" role="group" aria-label="Page Language">
+          <button id="lang-en-btn" class="lang-pill-btn active" type="button">English (EN)</button>
+          <button id="lang-pt-btn" class="lang-pill-btn" type="button">Português (PT-BR)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container doc-body">
+      <section class="doc-section">
+        <h2 data-del-i18n="stepsHeading">Steps to Request Account Deletion</h2>
+        <p data-del-i18n="stepsIntro">
+          Follow the steps below to permanently erase your Jack's Next Shot account and associated cloud data from Braveris Inc. servers:
+        </p>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3 data-del-i18n="step1Title">1. Choose Deletion Scope</h3>
+            <p data-del-i18n="step1Body" style="margin-bottom:0;">
+              Select whether you want full deletion (Firebase Authentication account + all Firestore cloud saves) or cloud gameplay progress deletion only.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3 data-del-i18n="step2Title">2. Submit This Online Request Form</h3>
+            <p data-del-i18n="step2Body" style="margin-bottom:0;">
+              Enter your Google Play Games display name (found inside the game under Settings → Account), a valid contact email, and submit the form below. Your request is written directly to our Firebase queue.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3 data-del-i18n="step3Title">3. Verification &amp; Deletion (7–30 Days)</h3>
+            <p data-del-i18n="step3Body" style="margin-bottom:0;">
+              Braveris Inc. verifies ownership of the matching player profile (usuarios/{uid}), permanently deletes your Firebase Authentication record and cloud progression within 7 business days (max 30 days), and sends confirmation to your email.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <h3 data-del-i18n="step4Title">4. Local Storage &amp; Play Games Profile</h3>
+            <p data-del-i18n="step4Body" style="margin-bottom:0;">
+              To clear local device saves immediately, go to Android Settings → Apps → Jack's Next Shot → Storage → Clear Data or uninstall the app. You can also erase Play Games leaderboard history via the Google Play Games app settings.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="request-form">
+        <h2 data-del-i18n="formHeading">Submit Account Deletion Request</h2>
+        <p data-del-i18n="formDesc">
+          All requests submitted below are recorded directly in the Firebase Cloud Firestore account_deletion_requests collection for processing by Braveris Inc.
+        </p>
+
+        <form id="delete-account-form" class="deletion-form" novalidate>
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label for="del-email" data-del-i18n="lblEmail">Contact Email (for confirmation) *</label>
+              <input id="del-email" class="form-input" type="email" required maxlength="160" placeholder="player@example.com" autocomplete="email">
+              <span class="form-hint" data-del-i18n="hintEmail">We will email confirmation once deletion is complete.</span>
+            </div>
+
+            <div class="form-field">
+              <label for="del-pg-name" data-del-i18n="lblPgName">Google Play Games Display Name *</label>
+              <input id="del-pg-name" class="form-input" type="text" required minlength="2" maxlength="80" placeholder="SheriffJack99">
+              <span class="form-hint" data-del-i18n="hintPgName">Shown in Settings → Account inside Jack's Next Shot (e.g., SheriffJack99).</span>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label for="del-scope" data-del-i18n="lblScope">Deletion Request Scope *</label>
+              <select id="del-scope" class="form-select">
+                <option value="full_account_and_cloud_data" data-del-i18n="optScopeFull">Delete Firebase Account &amp; All Associated Cloud Data (Recommended)</option>
+                <option value="cloud_data_only" data-del-i18n="optScopeCloud">Delete Cloud Gameplay Progression Data Only (Keep Account Access)</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="del-uid" data-del-i18n="lblUid">Firebase UID or Device ID (Optional)</label>
+              <input id="del-uid" class="form-input" type="text" maxlength="128" placeholder="Optional UID">
+              <span class="form-hint" data-del-i18n="hintUid">If known, paste your player UID or fallback ID; otherwise leave blank.</span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="del-reason" data-del-i18n="lblReason">Additional Details or Google Play Order ID (Optional)</label>
+            <textarea id="del-reason" class="form-textarea" maxlength="600" placeholder="Optional notes, approximate last login date, or GPA.xxxx order ID..."></textarea>
+            <span class="form-hint" data-del-i18n="hintReason">Helpful if you want us to verify a specific profile, backup, or recent purchase.</span>
+          </div>
+
+          <label class="form-checkbox-row" for="del-ack">
+            <input id="del-ack" type="checkbox" required>
+            <span data-del-i18n="lblAck">
+              I confirm that I am requesting deletion of my Jack's Next Shot account data provided by Braveris Inc. and understand that deleted progression, unlocked items, and virtual Braveria Stars cannot be recovered.
+            </span>
+          </label>
+
+          <div class="btn-row" style="margin-top: 6px;">
+            <button id="btn-submit-deletion" class="btn btn-primary" type="submit" data-del-i18n="btnSubmit">Submit Deletion Request</button>
+            <a class="btn btn-secondary" href="mailto:braverisinc@gmail.com?subject=Account%20Deletion%20Request%20-%20Jacks%20Next%20Shot">Email braverisinc@gmail.com</a>
+          </div>
+        </form>
+
+        <div id="delete-status-box" class="form-status" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="doc-section">
+        <h2 data-del-i18n="retentionHeading">Data Types Deleted, Kept &amp; Retention Periods</h2>
+        <p data-del-i18n="retentionIntro">
+          The table below specifies every category of data processed by Jack's Next Shot (Braveris Inc.), whether it is deleted or retained upon account deletion, and applicable retention periods:
+        </p>
+
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-del-i18n="thType">Data Category &amp; Storage</th>
+                <th data-del-i18n="thAction">Action Upon Deletion</th>
+                <th data-del-i18n="thRetention">Retention Period &amp; Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Firebase Authentication Account</strong><br><code>uid</code>, provider (<code>playgames.google.com</code> / anonymous), <code>displayName</code></td>
+                <td><span class="badge-del">Deleted</span></td>
+                <td>Permanently deleted within <strong>7 business days (max 30 days)</strong> after request verification.</td>
+              </tr>
+              <tr>
+                <td><strong>Cloud Firestore Profile (<code>usuarios/{uid}</code>)</strong><br><code>highScore</code>, <code>bestCombo</code>, <code>unlockedPlates</code>, <code>equipped</code> loadout, <code>dailyRewards</code>, <code>wallet</code>, timestamps, <code>offlineAdCycle</code></td>
+                <td><span class="badge-del">Deleted</span></td>
+                <td>Permanently deleted within <strong>7 business days (max 30 days)</strong> (not kept after account erasure).</td>
+              </tr>
+              <tr>
+                <td><strong>Cloud Firestore Subcollections &amp; Legacy Docs</strong><br><code>inventario</code>, <code>extrato</code>, <code>ledger</code>, and legacy <code>users/{uid}</code></td>
+                <td><span class="badge-del">Deleted</span></td>
+                <td>Permanently purged together with <code>usuarios/{uid}</code> within <strong>7–30 days</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Local Android Device Storage</strong><br><code>localStorage</code> saves, settings, <code>jns_offline_queue</code>, <code>jns_offline_ads_state</code></td>
+                <td><span class="badge-user">Immediate on Device</span></td>
+                <td>Deleted immediately when you clear app storage in Android Settings or uninstall <strong>Jack's Next Shot</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Google Play Games Leaderboards</strong><br>Public scores managed by Google Play Games Services</td>
+                <td><span class="badge-user">Player / Google Controlled</span></td>
+                <td>Can be erased anytime via the <strong>Google Play Games app → Settings → Delete Play Games account &amp; data</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Google Play Billing Audit Records (<code>processed_orders</code>)</strong><br>Server-only <code>orderId</code>, <code>purchaseToken</code>, <code>productId</code>, Star grant &amp; refund/void status</td>
+                <td><span class="badge-keep">Retained for Compliance</span></td>
+                <td>Retained for up to <strong>5 years</strong> (or longer where required by tax, accounting, anti-fraud, and Google Play chargeback compliance). Cannot be used to restore virtual items.</td>
+              </tr>
+              <tr>
+                <td><strong>Deletion Request Ticket (<code>account_deletion_requests</code>)</strong><br>Reference code, submission timestamp, processing status, confirmation email</td>
+                <td><span class="badge-keep">Retained Temporarily</span></td>
+                <td>Retained for up to <strong>180 days (6 months)</strong> after fulfillment as proof of compliance, then purged.</td>
+              </tr>
+              <tr>
+                <td><strong>Google AdMob Advertising Identifiers</strong><br>Device Advertising ID &amp; ad telemetry handled by Google LLC</td>
+                <td><span class="badge-keep">Managed by Google</span></td>
+                <td>Braveris Inc. stores no AdMob profiles on its servers; governable via Android Privacy Settings → Ads.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-copy">&copy; 2026 Braveris Inc. — Jack's Next Shot (<code>com.braverisinc.jacksnextshot</code>).</p>
+        <p class="footer-copy">Contact: <a href="mailto:braverisinc@gmail.com">braverisinc@gmail.com</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="../">Home</a>
+        <a href="../privacy-policy/">Privacy Policy</a>
+        <a href="../terms/">Terms of Service</a>
+        <a href="../support/">Support</a>
+        <a href="./">Delete Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../assets/js/site.js"></script>
+  <script type="module" src="../assets/js/delete-account.js"></script>
+</body>
+</html>
