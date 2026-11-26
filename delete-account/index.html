@@ -167,44 +167,44 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>Firebase Authentication Account</strong><br><code>uid</code>, provider (<code>playgames.google.com</code> / anonymous), <code>displayName</code></td>
-                <td><span class="badge-del">Deleted</span></td>
-                <td>Permanently deleted within <strong>7 business days (max 30 days)</strong> after request verification.</td>
+                <td><strong data-del-i18n="r1Name">Firebase Authentication Account</strong><br><code>uid</code>, <code>playgames.google.com</code> / anonymous, <code>displayName</code></td>
+                <td><span class="badge-del" data-del-i18n="badgeDeleted1">Deleted</span></td>
+                <td data-del-i18n="r1Ret">Permanently deleted within 7 business days (max 30 days) after request verification.</td>
               </tr>
               <tr>
-                <td><strong>Cloud Firestore Profile (<code>usuarios/{uid}</code>)</strong><br><code>highScore</code>, <code>bestCombo</code>, <code>unlockedPlates</code>, <code>equipped</code> loadout, <code>dailyRewards</code>, <code>wallet</code>, timestamps, <code>offlineAdCycle</code></td>
-                <td><span class="badge-del">Deleted</span></td>
-                <td>Permanently deleted within <strong>7 business days (max 30 days)</strong> (not kept after account erasure).</td>
+                <td><strong data-del-i18n="r2Name">Cloud Firestore Profile (usuarios/{uid})</strong><br><code>highScore</code>, <code>bestCombo</code>, <code>unlockedPlates</code>, <code>equipped</code>, <code>dailyRewards</code>, <code>wallet</code>, timestamps, <code>offlineAdCycle</code></td>
+                <td><span class="badge-del" data-del-i18n="badgeDeleted2">Deleted</span></td>
+                <td data-del-i18n="r2Ret">Permanently deleted within 7 business days (max 30 days); not kept after account erasure.</td>
               </tr>
               <tr>
-                <td><strong>Cloud Firestore Subcollections &amp; Legacy Docs</strong><br><code>inventario</code>, <code>extrato</code>, <code>ledger</code>, and legacy <code>users/{uid}</code></td>
-                <td><span class="badge-del">Deleted</span></td>
-                <td>Permanently purged together with <code>usuarios/{uid}</code> within <strong>7–30 days</strong>.</td>
+                <td><strong data-del-i18n="r3Name">Cloud Firestore Subcollections &amp; Legacy Docs</strong><br><code>inventario</code>, <code>extrato</code>, <code>ledger</code>, <code>users/{uid}</code></td>
+                <td><span class="badge-del" data-del-i18n="badgeDeleted3">Deleted</span></td>
+                <td data-del-i18n="r3Ret">Permanently purged together with usuarios/{uid} within 7-30 days.</td>
               </tr>
               <tr>
-                <td><strong>Local Android Device Storage</strong><br><code>localStorage</code> saves, settings, <code>jns_offline_queue</code>, <code>jns_offline_ads_state</code></td>
-                <td><span class="badge-user">Immediate on Device</span></td>
-                <td>Deleted immediately when you clear app storage in Android Settings or uninstall <strong>Jack's Next Shot</strong>.</td>
+                <td><strong data-del-i18n="r4Name">Local Android Device Storage</strong><br><code>localStorage</code>, settings, <code>jns_offline_queue</code>, <code>jns_offline_ads_state</code></td>
+                <td><span class="badge-user" data-del-i18n="badgeImmediate">Immediate on Device</span></td>
+                <td data-del-i18n="r4Ret">Deleted immediately when you clear app storage in Android Settings or uninstall Jack's Next Shot.</td>
               </tr>
               <tr>
-                <td><strong>Google Play Games Leaderboards</strong><br>Public scores managed by Google Play Games Services</td>
-                <td><span class="badge-user">Player / Google Controlled</span></td>
-                <td>Can be erased anytime via the <strong>Google Play Games app → Settings → Delete Play Games account &amp; data</strong>.</td>
+                <td><strong data-del-i18n="r5Name">Google Play Games Leaderboards</strong><br>Google Play Games Services</td>
+                <td><span class="badge-user" data-del-i18n="badgeGoogle">Player / Google Controlled</span></td>
+                <td data-del-i18n="r5Ret">Can be erased anytime via the Google Play Games app -> Settings -> Delete Play Games account &amp; data.</td>
               </tr>
               <tr>
-                <td><strong>Google Play Billing Audit Records (<code>processed_orders</code>)</strong><br>Server-only <code>orderId</code>, <code>purchaseToken</code>, <code>productId</code>, Star grant &amp; refund/void status</td>
-                <td><span class="badge-keep">Retained for Compliance</span></td>
-                <td>Retained for up to <strong>5 years</strong> (or longer where required by tax, accounting, anti-fraud, and Google Play chargeback compliance). Cannot be used to restore virtual items.</td>
+                <td><strong data-del-i18n="r6Name">Google Play Billing Audit Records (processed_orders)</strong><br><code>orderId</code>, <code>purchaseToken</code>, <code>productId</code>, Star grant &amp; refund/void status</td>
+                <td><span class="badge-keep" data-del-i18n="badgeKept">Retained for Compliance</span></td>
+                <td data-del-i18n="r6Ret">Retained for up to 5 years (or longer where required by tax, accounting, anti-fraud, and Google Play chargeback compliance). Cannot be used to restore virtual items.</td>
               </tr>
               <tr>
-                <td><strong>Deletion Request Ticket (<code>account_deletion_requests</code>)</strong><br>Reference code, submission timestamp, processing status, confirmation email</td>
-                <td><span class="badge-keep">Retained Temporarily</span></td>
-                <td>Retained for up to <strong>180 days (6 months)</strong> after fulfillment as proof of compliance, then purged.</td>
+                <td><strong data-del-i18n="r7Name">Deletion Request Ticket (account_deletion_requests)</strong><br><code>requestCode</code>, <code>submittedAt</code>, <code>status</code>, <code>contactEmail</code></td>
+                <td><span class="badge-keep" data-del-i18n="badgeTemp">Retained Temporarily</span></td>
+                <td data-del-i18n="r7Ret">Retained for up to 180 days (6 months) after fulfillment as proof of compliance, then purged.</td>
               </tr>
               <tr>
-                <td><strong>Google AdMob Advertising Identifiers</strong><br>Device Advertising ID &amp; ad telemetry handled by Google LLC</td>
-                <td><span class="badge-keep">Managed by Google</span></td>
-                <td>Braveris Inc. stores no AdMob profiles on its servers; governable via Android Privacy Settings → Ads.</td>
+                <td><strong data-del-i18n="r8Name">Google AdMob Advertising Identifiers</strong><br>Advertising ID &amp; ad telemetry (Google LLC)</td>
+                <td><span class="badge-keep" data-del-i18n="badgeManaged">Managed by Google</span></td>
+                <td data-del-i18n="r8Ret">Braveris Inc. stores no AdMob profiles on its servers; governable via Android Privacy Settings -> Ads.</td>
               </tr>
             </tbody>
           </table>
